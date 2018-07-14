@@ -18,9 +18,12 @@ class Board
 
   end
   def print_board
-    board = slots[:row_letter].join.scan(/.{1,7}/) #=> ["ABCDEFG"]
+    # board = slots[:row_letter].join.scan(/.{1,7}/) <<"\n" #=> ["ABCDEFG"]
+    layout = slots.map do |row|
+      row.join.scan(/.{1,7}/) <<"\n"
+    end
     # board = slots[:row_letter].join #=> ABCDEFG
-    puts board.join
+    puts layout.join
   end
     #or
     # columns organized by letters
