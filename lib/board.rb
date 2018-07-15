@@ -31,10 +31,18 @@ class Board
   end
 
   def draw_board
+    draw_letters
+    draw_slots
+  end
+
+  def draw_letters
     slots.each do |letter, slot|
       print letter
     end
     puts
+  end
+
+  def draw_slots
     count = 0
     until count == 7
       slots.each do |letter, slot|
@@ -44,16 +52,4 @@ class Board
       puts
     end
   end
-
-  # def draw_board
-  #   layout = slots.map do |row, value|
-  #     value.join.scan(/.{1,7}/) <<"\n"
-  #   end
-  #   puts layout.join
-  # end
-
-
-  # def change_board
-  #
-  # end
 end
