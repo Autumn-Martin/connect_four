@@ -53,7 +53,7 @@ class Board
     end
   end
 
-  def change_slots(input)
+  def fill_slot(input)
     open_slot_index = find_open_slot(input)
     place_chip(input, open_slot_index)
     draw_board

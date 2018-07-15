@@ -6,7 +6,7 @@ board = Board.new
 puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
 input = gets.chomp.upcase
 
-board.change_slots(input)
+board.fill_slot(input)
 # if guess_input == "A"
 # if guess_input == "B"
 # take user input, check that column -> find.first slot with "."
