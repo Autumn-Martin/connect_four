@@ -14,8 +14,8 @@ Classes
 
 * Player? - could have them enter their name, pick x or o, etc
   - @name - AI, player name
-  - @chip_choice
-* Game
+
+* Game - game logic
  - @game_state
  - def initialize
       new instance of board
