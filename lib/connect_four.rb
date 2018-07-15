@@ -4,4 +4,7 @@ puts "Welcome! Let's play Connect Four!"
 board = Board.new
 
 puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
-guess_input = gets.chomp
+guess_input = gets.chomp.upcase
+
+# if guess_input == "A"
+# if guess_input == "B"
