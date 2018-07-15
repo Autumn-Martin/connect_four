@@ -36,3 +36,12 @@ NOTES:
 --iteration 2--
  * player pieces will be X's
  * computer pieces will be O's
+ * request user input to place an individual piece
+  - ask user to enter A-G
+  - update the board with location of piece
+  - display the new board
+ * computer takes a turn
+  - puts a piece in one of the 7 columns at random
+  - update the board with location
+  - displays the new board
+  * repeat
