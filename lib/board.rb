@@ -1,10 +1,11 @@
+require "pry"
 class Board
   attr_reader :slots
 
   def initialize
     # by rows
     @slots = {
-      row_letter: ["A","B","C","D","E","F","G"],
+      letter: ["A","B","C","D","E","F","G"],
       "row6" => [".",".",".",".",".",".","."],
       "row5" => [".",".",".",".",".",".","."],
       "row4" => [".",".",".",".",".",".","."],
@@ -14,6 +15,22 @@ class Board
     }
 
     @draw_board = draw_board
+
+    # @slides = {
+    #   "A" => [".",".",".",".",".","."], # left to right is bottom to top
+    #   "B" => [".",".",".",".",".","."],
+    #   "C" => [".",".",".",".",".","."],
+    #   "D" => [".",".",".",".",".","."],
+    #   "E" => [".",".",".",".",".","."],
+    #   "F" => [".",".",".",".",".","."],
+    #   "G" => [".",".",".",".",".","."]
+    # }
+
+    # @slides = {
+    #   slots[:letter][1] => slots["row6"][1] + slots["row5"][1],
+    #   slots[:letter][2] => slots["row6"][2] + slots["row5"][2]
+    # }
+
   end
 
   def draw_board
@@ -24,4 +41,7 @@ class Board
   end
 
 
+  # def change_board
+  #
+  # end
 end
