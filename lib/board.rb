@@ -39,16 +39,15 @@ class Board
     slots.each do |letter, slot|
       print letter
     end
-    puts
   end
 
   def draw_slots
-    count = 0
-    until count == 7
+    count = 7
+    until count < 0
       slots.each do |letter, slot|
-          print slot[count]
+        print slot[count]
       end
-      count += 1
+      count -= 1
       puts
     end
   end
