@@ -52,4 +52,23 @@ class Board
       puts
     end
   end
+
+  def change_slots(input)
+    open_slot_index = find_open_slot(input)
+    place_chip(input, open_slot_index)
+    draw_board
+  end
+
+  def find_open_slot(input)
+    @slots[input].find_index do |slot|
+      "."
+    end  #=> 0 (#class = integer)
+  end
+
+  def place_chip(input, open_slot_index)
+    @slots[input][open_slot_index] = "X"
+  end
+
+
+
 end
