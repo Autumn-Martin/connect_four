@@ -8,3 +8,7 @@ guess_input = gets.chomp.upcase
 
 # if guess_input == "A"
 # if guess_input == "B"
+# take user input, check that column -> find.first slot with "."
+  # -> change slot to "X"
+# implement the computer's turn
+  # pick random column letter -> same loop 
