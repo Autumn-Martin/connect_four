@@ -5,4 +5,11 @@ class Player
     @name = name
     @chip = "X"
   end
+
+  def get_input
+    puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
+    input = gets.chomp.upcase
+  end
+
+  
 end
