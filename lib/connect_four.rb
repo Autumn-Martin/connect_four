@@ -1,4 +1,9 @@
 require "./lib/board"
+require "./lib/player"
+
+puts "Hello, what is your name?"
+name = gets.chomp
+player = Player.new(name)
 
 puts "Welcome! Let's play Connect Four!"
 board = Board.new
