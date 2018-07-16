@@ -16,5 +16,9 @@ class PlayerTest < Minitest::Test
     player = Player.new(name)
     assert_equal "#{name}", player.name
   end
-  
+
+  def test_it_has_a_chip
+    player = Player.new("Leia")
+    assert_equal "X", player.chip
+  end
 end
