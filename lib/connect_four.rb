@@ -1,19 +1,23 @@
 require "./lib/board"
 require "./lib/player"
+require "./lib/ai"
 
 puts "Hello, what is your name?"
 name = gets.chomp
 player = Player.new(name)
+ai = AI.new("Alexa")
 
 puts "Welcome #{name}! Let's play Connect Four!"
 board = Board.new
 
-puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
-input = gets.chomp.upcase
+# puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
+# input = gets.chomp.upcase
+player_input = player.get_input
+board.fill_slot(player_input)
 
-board.fill_slot(input)
-# if guess_input == "A"
-# if guess_input == "B"
+ai_input = ai.get_input
+board.fill_slot(ai_input)
+
 # take user input, check that column -> find.first slot with "."
   # -> change slot to "X"
 # implement the computer's turn
