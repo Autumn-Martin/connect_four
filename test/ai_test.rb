@@ -14,6 +14,10 @@ class AITest < Minitest::Test
   def test_it_has_a_name
     ai = AI.new("Alexa")
     assert_equal "Alexa", ai.name
-  end 
+  end
 
+  def test_it_has_a_chip
+    ai = AI.new("Alexa")
+    assert_equal "O", ai.chip
+  end 
 end
