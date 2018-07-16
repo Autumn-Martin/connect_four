@@ -1,6 +1,11 @@
 require "./lib/board"
+require "./lib/player"
 
-puts "Welcome! Let's play Connect Four!"
+puts "Hello, what is your name?"
+name = gets.chomp
+player = Player.new(name)
+
+puts "Welcome #{name}! Let's play Connect Four!"
 board = Board.new
 
 puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
