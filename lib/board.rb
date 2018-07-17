@@ -68,6 +68,12 @@ class Board
     @slots[input][open_slot_index] = chip
   end
 
+  def top_row
+    [@slots["A"][5], @slots["B"][5], @slots["C"][5], @slots["D"][5], @slots["E"][5], @slots["F"][5], @slots["G"][5]]
+  end
 
+  def full?
+    top_row.any? {|slot| slot == "."}
+  end
 
 end
