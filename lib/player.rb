@@ -8,8 +8,7 @@ class Player
 
   def get_input
     puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
-    input = gets.chomp.upcase
+    gets.chomp.upcase
   end
 
-  
 end
