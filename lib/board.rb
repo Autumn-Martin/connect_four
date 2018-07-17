@@ -52,9 +52,9 @@ class Board
     end
   end
 
-  def fill_slot(input)
+  def fill_slot(input, chip)
     open_slot_index = find_open_slot(input)
-    place_chip(input, open_slot_index)
+    place_chip(input, open_slot_index, chip)
     draw_board
   end
 
@@ -64,8 +64,8 @@ class Board
     end  #=> 0 (#class = integer)
   end
 
-  def place_chip(input, open_slot_index)
-    @slots[input][open_slot_index] = "X"
+  def place_chip(input, open_slot_index, chip)
+    @slots[input][open_slot_index] = chip
   end
 
 
