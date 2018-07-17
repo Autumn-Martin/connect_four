@@ -12,6 +12,7 @@ board = Board.new
 
 # puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
 # input = gets.chomp.upcase
+
 chip = player.chip
 player_input = player.get_input
 board.fill_slot(player_input, chip)
@@ -24,3 +25,17 @@ board.fill_slot(ai_input, chip)
   # -> change slot to "X"
 # implement the computer's turn
   # pick random column letter -> same loop
+
+# while .any? of the top row has "." == true (|| win == false)
+  #get computer input
+    # if column not filled (if .include? "." == true)
+      #fill first empty spot
+    # if column filled
+      #get another input
+
+  # get player input
+    # if column not filled (if .include? "." == true)
+      #fill first empty spot
+    # if column filled
+      #get another input
+#end 
