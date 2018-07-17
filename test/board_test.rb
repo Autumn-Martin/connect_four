@@ -16,10 +16,21 @@ class BoardTest < Minitest::Test
     assert_equal 0, board.find_open_slot(input)
   end
 
-  def test_it_places_chip_in_open_slot
+  # def test_it_places_chip_in_open_slot
+  #   board = Board.new
+  #   input = "A"
+  #   open_slot_index = board.find_open_slot(input)
+  #   assert_equal "X", board.place_chip(input, open_slot_index, chip)
+  # end
+
+  def test_it_has_a_top_row
     board = Board.new
-    input = "A"
-    open_slot_index = board.find_open_slot(input)
-    assert_equal "X", board.place_chip(input, open_slot_index)
+    assert_equal [".",".",".",".",".",".","."], board.top_row
+  end
+
+  def test_can_tell_if_top_row_is_full
+    board = Board.new
+    top_row = [".",".",".",".",".",".","."]
+    assert board.full?
   end
 end
