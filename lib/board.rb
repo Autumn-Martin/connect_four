@@ -1,6 +1,6 @@
 require "pry"
 class Board
-  attr_reader :slots
+  attr_accessor :slots
 
   def initialize
     # by rows
@@ -58,6 +58,10 @@ class Board
     draw_board
   end
 
+  def slot_open?(input)
+    @slots[input][5] == "."
+  end
+
   def find_open_slot(input)
     @slots[input].find_index do |slot|
       "."
@@ -72,8 +76,8 @@ class Board
     [@slots["A"][5], @slots["B"][5], @slots["C"][5], @slots["D"][5], @slots["E"][5], @slots["F"][5], @slots["G"][5]]
   end
 
-  def full?
-    top_row.any? {|slot| slot == "."}
+  def empty? # renaming to make more sense with output
+    top_row.any? {|slot| slot == "."} #=> true if not full; false if full
   end
 
 end

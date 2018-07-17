@@ -30,7 +30,24 @@ class BoardTest < Minitest::Test
 
   def test_can_tell_if_top_row_is_full
     board = Board.new
-    top_row = [".",".",".",".",".",".","."]
-    assert board.full?
+    # set each element equal to "." or "X" or "O" in test
+    board.slots["A"][5] = "."
+    board.slots["B"][5] = "."
+    board.slots["C"][5] = "."
+    board.slots["D"][5] = "."
+    board.slots["E"][5] = "."
+    board.slots["F"][5] = "."
+    board.slots["G"][5] = "."
+    assert board.empty?
+
+    board.slots["A"][5] = "X"
+    board.slots["B"][5] = "X"
+    board.slots["C"][5] = "X"
+    board.slots["D"][5] = "O"
+    board.slots["E"][5] = "O"
+    board.slots["F"][5] = "O"
+    board.slots["G"][5] = "X"
+    refute board.empty?
   end
+
 end
