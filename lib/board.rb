@@ -36,6 +36,7 @@ class Board
   end
 
   def draw_letters
+    puts
     slots.each do |letter, slot|
       print letter
     end
@@ -50,6 +51,7 @@ class Board
       count -= 1
       puts
     end
+    puts
   end
 
   def fill_slot(input, chip)
