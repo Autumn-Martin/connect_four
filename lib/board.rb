@@ -1,13 +1,13 @@
 require "pry"
 class Board
-  attr_reader :slots
+  attr_accessor :slots
 
   def initialize
     # by rows
     # @slots = {
     #   letter: ["A","B","C","D","E","F","G"],
     #   "row6" => [".",".",".",".",".",".","."],
-    #   "row5" => [".",".",".",".",".",".","."],
+    #   "row" => [".",".",".",".",".",".","."],
     #   "row4" => [".",".",".",".",".",".","."],
     #   "row3" => [".",".",".",".",".",".","."],
     #   "row2" => [".",".",".",".",".",".","."],
@@ -17,7 +17,7 @@ class Board
     @column_names = ["A","B","C","D","E","F","G"]
 
     @slots = {
-      "A" => [".",".",".",".",".","."], # left to right is bottom to top
+      "A" => [".",".",".",".",".","."], # left to right is top to bottom
       "B" => [".",".",".",".",".","."],
       "C" => [".",".",".",".",".","."],
       "D" => [".",".",".",".",".","."],
@@ -26,7 +26,7 @@ class Board
       "G" => [".",".",".",".",".","."]
     }
 
-    @draw_board = draw_board
+    # @draw_board = draw_board
 
   end
 
@@ -42,7 +42,7 @@ class Board
   end
 
   def draw_slots
-    count = 7
+    count = 6
     until count < 0
       slots.each do |letter, slot|
         print slot[count]
@@ -55,12 +55,15 @@ class Board
   def fill_slot(input, chip)
     open_slot_index = find_open_slot(input)
     place_chip(input, open_slot_index, chip)
-    draw_board
+  end
+
+  def slot_open?(input)
+    @slots[input][5] == "."
   end
 
   def find_open_slot(input)
     @slots[input].find_index do |slot|
-      "."
+      slot == "."
     end  #=> 0 (#class = integer)
   end
 
@@ -68,6 +71,13 @@ class Board
     @slots[input][open_slot_index] = chip
   end
 
+  def top_row
+    [@slots["A"][5], @slots["B"][5], @slots["C"][5], @slots["D"][5], @slots["E"][5], @slots["F"][5], @slots["G"][5]]
+  end
 
+  def top_row_empty? # renaming to make more sense with output
+    top_row.any? {|slot| slot == "."} #=> true if not full; false if full
+  end
 
+   
 end

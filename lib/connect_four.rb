@@ -7,11 +7,15 @@ name = gets.chomp
 player = Player.new(name)
 ai = AI.new("Alexa")
 
-puts "Welcome #{name}! Let's play Connect Four!"
-board = Board.new
+puts "Hello, what is your name?"
+name = gets.chomp
+Game.new(Player.new(name), AI.new("Alexa"))
+
+
 
 # puts "Which slot would you like to select? Enter A,B,C,D,E,F, or G. >"
 # input = gets.chomp.upcase
+
 chip = player.chip
 player_input = player.get_input
 board.fill_slot(player_input, chip)
@@ -24,3 +28,24 @@ board.fill_slot(ai_input, chip)
   # -> change slot to "X"
 # implement the computer's turn
   # pick random column letter -> same loop
+while board.empty? == true
+  chip = ai.chip
+  ai_input = ai.get_input
+  if @slots["A"].include? "." == true
+    board.fill_slot(ai_input, chip)
+  else
+    ai_
+
+# while .any? of the top row has "." == true (|| win == false)
+  #get computer input
+    # if column not filled (if .include? "." == true)
+      #fill first empty spot
+    # if column filled
+      #get another input
+
+  # get player input
+    # if column not filled (if .include? "." == true)
+      #fill first empty spot
+    # if column filled
+      #get another input
+#end
