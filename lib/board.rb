@@ -99,6 +99,9 @@ class Board
     grouped_chips[0][1].count(chip)
   end
 
+  def four_x_in_a_row(grouped_chips)
+    grouped_chips.any? {|group| group[1].join.include? "XXXX"}
+  end
 
   # def horizontal?
   #   if @slots[new_fill_index]  + @slots[new_fill_index - 1] + @slots[new_fill_index - 2] + @slots[new_fill_index - 3] == "XXXX"
