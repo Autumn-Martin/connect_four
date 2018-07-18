@@ -125,12 +125,20 @@ class BoardTest < Minitest::Test
     assert_equal 4, board.count_x_or_o(grouped_chips, chip)
   end
 
-  def test_can_find_a_pattern_of_four_in_a_row
+  def test_can_detect_pattern_of_four_x_in_a_row
     board = Board.new
 
     grouped_chips = [["X", ["X", "X", "X", "X"]], [".", [".", "."]]]
 
     assert board.four_x_in_a_row(grouped_chips)
+  end
+
+  def test_can_detect_pattern_of_four_o_in_a_row
+    board = Board.new
+
+    grouped_chips = [["O", ["O", "O", "O", "O"]], [".", [".", "."]]]
+
+    assert board.four_o_in_a_row(grouped_chips)
   end
 
 
