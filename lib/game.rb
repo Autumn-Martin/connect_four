@@ -3,31 +3,51 @@ require "./lib/ai"
 require "./lib/player"
 
 class Game
-  attr_reader :board, :player_1, :player_2
+  attr_reader :board, :player_1, :player_2, :current_player
   def initialize(player_1, player_2)
     @player_1 = player_1
     @player_2 = player_2
+    @current_player = player_1
     @board = Board.new
     welcome
-    turn(player_1)
+    turn
   end
 
   def welcome
     puts "Welcome #{player_1.name}! Let's play Connect Four!"
+    board.draw_board
   end
 
-  def turn(player)
-    input = player.get_input
-    chip = player.chip
+  def turn
+    input = current_player.get_input
+    chip = current_player.chip
     if board.slot_open?(input)
-      board.fill_slot(input, chip)
+      @board.fill_slot(input, chip)
+      board.draw_board
+      if board.top_row_empty?
+        switch
+        turn
+      else
+        end_game
+      end
     else
-      turn(player)
+      puts "This spot is full. Try again!"
+      turn
     end
   end
 
+  def switch
+    if current_player == player_1
+      @current_player = player_2
+    elsif current_player == player_2
+      @current_player = player_1
+    end
+  end
 
-
+  def end_game
+    puts "Game Over!"
+    board.draw_board
+  end
 end
 
 # while board.empty? == true
