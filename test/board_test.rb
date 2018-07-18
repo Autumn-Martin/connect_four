@@ -58,7 +58,7 @@ class BoardTest < Minitest::Test
     board.slots["E"][5] = "."
     board.slots["F"][5] = "."
     board.slots["G"][5] = "."
-    assert board.empty?
+    assert board.top_row_empty?
 
     board.slots["A"][5] = "X"
     board.slots["B"][5] = "X"
@@ -67,7 +67,7 @@ class BoardTest < Minitest::Test
     board.slots["E"][5] = "O"
     board.slots["F"][5] = "O"
     board.slots["G"][5] = "X"
-    refute board.empty?
+    refute board.top_row_empty?
   end
 
 end
