@@ -116,6 +116,15 @@ class BoardTest < Minitest::Test
   end
 
 
+  def test_can_count_number_x_or_o_in_a_row
+    board = Board.new
+    # input = "A"
+    chip = "X"
+
+    grouped_chips = [["X", ["X", "X", "X", "X"]], [".", [".", "."]]]
+    assert_equal 4, board.count_x_or_o(grouped_chips, chip)
+  end
+
 
 
   # def test_can_tell_four_in_a_row_horizontally
