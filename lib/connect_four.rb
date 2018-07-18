@@ -1,3 +1,3 @@
 require "./lib/game"
 
-Game.new(Player.new("Autumn"), AI.new("Alexa"))
+Game.new(AI.new("Autumn", "X"), AI.new("Sean", "O"))

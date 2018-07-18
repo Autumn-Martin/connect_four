@@ -17,7 +17,7 @@ class Board
     @column_names = ["A","B","C","D","E","F","G"]
 
     @slots = {
-      "A" => [".",".",".",".",".","."], # left to right is top to bottom
+      "A" => [".",".",".",".",".","."], # left to right is bottom to top
       "B" => [".",".",".",".",".","."],
       "C" => [".",".",".",".",".","."],
       "D" => [".",".",".",".",".","."],
@@ -79,5 +79,18 @@ class Board
     top_row.any? {|slot| slot == "."} #=> true if not full; false if full
   end
 
-   
+  def new_fill_index(input, open_slot_index)
+    binding.pry
+    @slots[input][[open_slot_index] -1]
+  end
+
+  # def horizontal?
+  #   if @slots[new_fill_index]  + @slots[new_fill_index - 1] + @slots[new_fill_index - 2] + @slots[new_fill_index - 3] == "XXXX"
+  #
+  #     true
+  #   end
+  # end
+
+
+
 end

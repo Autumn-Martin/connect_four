@@ -24,11 +24,11 @@ class Game
     if board.slot_open?(input)
       @board.fill_slot(input, chip)
       board.draw_board
-      if board.top_row_empty?
+      if game_over? == true
+        end_game
+      else  # switch/turn
         switch
         turn
-      else
-        end_game
       end
     else
       puts "This spot is full. Try again!"
@@ -41,6 +41,16 @@ class Game
       @current_player = player_2
     elsif current_player == player_2
       @current_player = player_1
+    end
+  end
+
+  def game_over
+    if board.top_row_empty? == false
+      puts "It's a draw!"
+    elsif board.horizontal?
+      puts "There's a winner!"
+    elsif board.vertical?
+      puts "There's a winner!"
     end
   end
 
