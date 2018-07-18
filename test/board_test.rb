@@ -76,7 +76,7 @@ class BoardTest < Minitest::Test
     board.slots["B"][0] = "X"
     board.slots["C"][0] = "X"
     board.slots["D"][0] = "X"
-    assert board.horzontal?
+    assert board.horizontal?
   end
 
 end
