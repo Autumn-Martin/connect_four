@@ -70,4 +70,13 @@ class BoardTest < Minitest::Test
     refute board.top_row_empty?
   end
 
+  def test_can_tell_four_in_a_row_horizontally
+    board = Board.new
+    board.slots["A"][0] = "X"
+    board.slots["B"][0] = "X"
+    board.slots["C"][0] = "X"
+    board.slots["D"][0] = "X"
+    assert board.horzontal?
+  end
+
 end
