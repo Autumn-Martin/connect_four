@@ -21,10 +21,10 @@ class Game
   def turn
     input = current_player.get_input
     chip = current_player.chip
-    if board.slot_open?(input)
+    if board.column_open?(input)
       @board.fill_slot(input, chip)
       board.draw_board
-      if game_over? == true
+      if game_over == true
         end_game
       else  # switch/turn
         switch
@@ -46,11 +46,13 @@ class Game
 
   def game_over
     if board.top_row_empty? == false
-      puts "It's a draw!"
-    elsif board.horizontal?
-      puts "There's a winner!"
-    elsif board.vertical?
-      puts "There's a winner!"
+      true
+    else
+      false
+    # elsif board.horizontal?
+    #   puts "There's a winner!"
+    # elsif board.vertical?
+    #   puts "There's a winner!"
     end
   end
 
@@ -59,25 +61,3 @@ class Game
     board.draw_board
   end
 end
-
-# while board.empty? == true
-#   chip = ai.chip
-#   ai_input = ai.get_input
-#   if @slots["A"].include? "." == true
-#     board.fill_slot(ai_input, chip)
-#   else
-#     ai_
-
-# while .any? of the top row has "." == true (|| win == false)
-  #get computer input
-    # if column not filled (if .include? "." == true)
-      #fill first empty spot
-    # if column filled
-      #get another input
-
-  # get player input
-    # if column not filled (if .include? "." == true)
-      #fill first empty spot
-    # if column filled
-      #get another input
-#end
