@@ -82,6 +82,7 @@ class BoardTest < Minitest::Test
     board.slots["F"][5] = "."
     board.slots["G"][5] = "."
     assert board.top_row_empty?
+  end
 
   def test_can_tell_if_top_row_is_full
     board = Board.new
@@ -93,16 +94,29 @@ class BoardTest < Minitest::Test
     board.slots["E"][5] = "O"
     board.slots["F"][5] = "O"
     board.slots["G"][5] = "X"
+
     refute board.top_row_empty?
   end
 
+  def test_can_group_columns_by_nonunique_elements_in_a_row #by same type of chip/no chip
+    board = Board.new
+    input = "A"
 
-  # def test_for_new_fill_index
-  #   board = Board.new
-  #   assert_equal new_fill_index("A", )
-  # end
+    board.slots["A"][0] = "X"
+    board.slots["A"][1] = "X"
+    board.slots["A"][2] = "X"
+    board.slots["A"][3] = "X"
+    board.slots["A"][4] = "."
+    board.slots["A"][5] = "."
 
+    expected = [["X", ["X", "X", "X", "X"]], [".", [".", "."]]]
+
+
+    assert_equal expected, board.group_column(input)
   end
+
+
+
 
   # def test_can_tell_four_in_a_row_horizontally
   #   board = Board.new
