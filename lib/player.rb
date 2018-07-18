@@ -1,9 +1,9 @@
 require "pry"
 class Player
   attr_reader :name, :chip
-  def initialize(name)
+  def initialize(name, chip)
     @name = name
-    @chip = "X"
+    @chip = chip
   end
 
   def get_input

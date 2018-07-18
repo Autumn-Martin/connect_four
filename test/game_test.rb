@@ -4,8 +4,8 @@ require "./lib/game"
 
 class GameTest < Minitest::Test
   def setup
-    @player_1 = AI.new("Autumn")
-    @player_2 = AI.new("Alexa")
+    @player_1 = AI.new("Autumn", "X")
+    @player_2 = AI.new("Alexa", "O")
     @game = Game.new(@player_1, @player_2)
   end
 

@@ -6,7 +6,7 @@ require "./lib/player"
 
 class PlayerTest < Minitest::Test
   def test_it_exists
-    player = Player.new("Leia")
+    player = Player.new("Leia", "X")
     assert_instance_of Player, player
   end
 
@@ -19,13 +19,13 @@ class PlayerTest < Minitest::Test
   end
 
   def test_it_has_a_chip
-    player = Player.new("Leia")
+    player = Player.new("Leia", "X")
     assert_equal "X", player.chip
   end
 
   def test_it_gets_input
-    # enter A when prompted 
-    player = Player.new("Leia")
+    # enter A when prompted
+    player = Player.new("Leia", "X")
     assert_equal "A", player.get_input
   end
 end

@@ -2,9 +2,9 @@ require "pry"
 
 class AI
   attr_reader :name, :chip
-  def initialize(name)
+  def initialize(name, chip)
     @name = name
-    @chip = "O"
+    @chip = chip
   end
 
   def get_input
