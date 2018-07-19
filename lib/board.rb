@@ -54,11 +54,6 @@ class Board
     puts
   end
 
-  def fill_slot(input, chip)
-    open_slot_index = find_open_slot(input)
-    place_chip(input, open_slot_index, chip)
-  end
-
   def column_open?(input)
     @slots[input][5] == "."
   end
@@ -90,21 +85,41 @@ class Board
 
 
   def group_column(input) #=> [[".", ["."]], ["X", ["X", "X", "X", "X"]], [".", ["."]]]
-    grouped_chips = @slots[input].chunk do |slot|
+    grouped_column = @slots[input].chunk do |slot|
       slot
     end.to_a
   end
 
   def four_x_in_a_row(grouped_chips) # detecting 4 in a row
-    grouped_chips.any? {|group| group[1].join.include? "XXXX" || "OOOO"}
+    grouped_chips.any? {|group| group[1].join.include? "XXXX"}
   end
 
   def four_o_in_a_row(grouped_chips) # detecting 4 in a row
     grouped_chips.any? {|group| group[1].join.include? "OOOO"}
   end
 
-  def check_win(input, chip)
+  def check_vertical_win(input, chip)
     grouped_chips = group_column(input)
+    if chip == "X"
+      four_x_in_a_row(grouped_chips)
+    elsif chip == "O"
+      four_o_in_a_row(grouped_chips)
+    end
+  end
+#--------------------------------------------------------------#
+  def new_chip_row(open_slot_index)
+    [@slots["A"][open_slot_index], @slots["B"][open_slot_index], @slots["C"][open_slot_index], @slots["D"][open_slot_index], @slots["E"][open_slot_index], @slots["F"][open_slot_index], @slots["G"][open_slot_index]]
+  end
+
+
+  def group_row(open_slot_index)
+    grouped_row = new_chip_row(open_slot_index).chunk do |slot|
+      slot
+    end.to_a
+  end
+
+  def check_horizontal_win(open_slot_index, chip)
+    grouped_chips = group_row(open_slot_index)
     if chip == "X"
       four_x_in_a_row(grouped_chips)
     elsif chip == "O"
