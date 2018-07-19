@@ -36,6 +36,7 @@ class Board
   end
 
   def draw_letters
+    puts
     slots.each do |letter, slot|
       print letter
     end
@@ -50,6 +51,7 @@ class Board
       count -= 1
       puts
     end
+    puts
   end
 
   def fill_slot(input, chip)
@@ -93,11 +95,22 @@ class Board
     end.to_a
   end
 
-  def count_x_or_o(grouped_chips, chip) #=> 4 integer if there are 4 X's
-    grouped_chips[0][1].count(chip)
+  def four_x_in_a_row(grouped_chips) # detecting 4 in a row
+    grouped_chips.any? {|group| group[1].join.include? "XXXX" || "OOOO"}
   end
 
+  def four_o_in_a_row(grouped_chips) # detecting 4 in a row
+    grouped_chips.any? {|group| group[1].join.include? "OOOO"}
+  end
 
+  def check_win(input, chip)
+    grouped_chips = group_column(input)
+    if chip == "X"
+      four_x_in_a_row(grouped_chips)
+    elsif chip == "O"
+      four_o_in_a_row(grouped_chips)
+    end
+  end
   # def horizontal?
   #   if @slots[new_fill_index]  + @slots[new_fill_index - 1] + @slots[new_fill_index - 2] + @slots[new_fill_index - 3] == "XXXX"
   #
