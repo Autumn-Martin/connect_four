@@ -54,14 +54,15 @@ class Game
       true
     else
       false
-    # elsif board.horizontal?
-    #   puts "There's a winner!"
-    # elsif board.vertical?
-    #   puts "There's a winner!"
     end
   end
 
   def end_game
+    if board.top_row_empty? == false
+      puts "It's a draw!"
+    else
+      puts "There's a winner!"
+    end
     puts "Game Over!"
     board.draw_board
   end
