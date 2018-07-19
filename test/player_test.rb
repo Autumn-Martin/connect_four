@@ -11,11 +11,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_it_has_a_name
-    skip
-    puts "What is your name?"
-    name = gets.chomp
-    player = Player.new(name)
-    assert_equal "#{name}", player.name
+    player = Player.new("Leia", "X")
+    assert_equal "Leia", player.name
   end
 
   def test_it_has_a_chip

@@ -18,7 +18,7 @@ class GameTest < Minitest::Test
   end
 
   def test_it_has_players
-    assert_equal @player_1, @game.player_1 # can I extract what I turned in
+    assert_equal @player_1, @game.player_1 
     assert_equal @player_2, @game.player_2
   end
 

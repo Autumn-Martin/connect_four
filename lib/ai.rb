@@ -9,6 +9,6 @@ class AI
 
   def get_input
     letters = ["A","B","C","D","E","F","G"]
-    letters.sample # picks a random element
+    letters.sample # picks a random letter
   end
 end

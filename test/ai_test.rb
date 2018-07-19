@@ -20,12 +20,10 @@ class AITest < Minitest::Test
     ai = AI.new("Alexa", "O")
     assert_equal "O", ai.chip
   end
-#------------ this test will need a refactor-------
+
   def test_it_gets_input
     # input is random
     ai = AI.new("Alexa", "O")
-    # assert_equal "A" || "B" || "C" || "D" || "E" || "F" || "G", ai.get_input
-    # refute_equal ai.get_input, ai.get_input
     refute_nil ai.get_input
   end
 end
