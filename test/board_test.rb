@@ -30,17 +30,6 @@ class BoardTest < Minitest::Test
     refute board.column_open?(input)
   end
 
-  def test_slots_can_be_filled # integration test
-    board = Board.new
-    input = "A"
-    chip = "X"
-
-    open_slot_index = board.find_open_slot(input)
-    board.place_chip(input, open_slot_index, chip)
-
-    assert_equal "X", board.fill_slot(input, chip)
-  end
-
   def test_it_finds_first_available_open_slot
     board = Board.new
     input = "A"
