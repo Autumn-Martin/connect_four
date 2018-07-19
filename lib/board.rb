@@ -96,7 +96,7 @@ class Board
   end
 
   def four_x_in_a_row(grouped_chips) # detecting 4 in a row
-    grouped_chips.any? {|group| group[1].join.include? "XXXX" || "OOOO"}
+    grouped_chips.any? {|group| group[1].join.include? "XXXX"}
   end
 
   def four_o_in_a_row(grouped_chips) # detecting 4 in a row
@@ -110,6 +110,10 @@ class Board
     elsif chip == "O"
       four_o_in_a_row(grouped_chips)
     end
+  end
+
+  def new_chip_row(open_slot_index)
+    [@slots["A"][open_slot_index], @slots["B"][open_slot_index], @slots["C"][open_slot_index], @slots["D"][open_slot_index], @slots["E"][open_slot_index], @slots["F"][open_slot_index], @slots["G"][open_slot_index]]
   end
   # def horizontal?
   #   if @slots[new_fill_index]  + @slots[new_fill_index - 1] + @slots[new_fill_index - 2] + @slots[new_fill_index - 3] == "XXXX"
