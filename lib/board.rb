@@ -103,7 +103,7 @@ class Board
     grouped_chips.any? {|group| group[1].join.include? "OOOO"}
   end
 
-  def check_horizontal_win(input, chip)
+  def check_vertical_win(input, chip)
     grouped_chips = group_column(input)
     if chip == "X"
       four_x_in_a_row(grouped_chips)
@@ -123,7 +123,7 @@ class Board
     end.to_a
   end
 
-  def check_vertical_win(open_slot_index, chip)
+  def check_horizontal_win(open_slot_index, chip)
     grouped_chips = group_row(open_slot_index)
     if chip == "X"
       four_x_in_a_row(grouped_chips)
