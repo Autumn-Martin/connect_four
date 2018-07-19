@@ -90,7 +90,7 @@ class Board
 
 
   def group_column(input) #=> [[".", ["."]], ["X", ["X", "X", "X", "X"]], [".", ["."]]]
-    grouped_chips = @slots[input].chunk do |slot|
+    grouped_column = @slots[input].chunk do |slot|
       slot
     end.to_a
   end
@@ -103,7 +103,7 @@ class Board
     grouped_chips.any? {|group| group[1].join.include? "OOOO"}
   end
 
-  def check_win(input, chip)
+  def check_horizontal_win(input, chip)
     grouped_chips = group_column(input)
     if chip == "X"
       four_x_in_a_row(grouped_chips)
@@ -111,9 +111,25 @@ class Board
       four_o_in_a_row(grouped_chips)
     end
   end
-
+#--------------------------------------------------------------#
   def new_chip_row(open_slot_index)
     [@slots["A"][open_slot_index], @slots["B"][open_slot_index], @slots["C"][open_slot_index], @slots["D"][open_slot_index], @slots["E"][open_slot_index], @slots["F"][open_slot_index], @slots["G"][open_slot_index]]
+  end
+
+
+  def group_row(open_slot_index)
+    grouped_row = new_chip_row(open_slot_index).chunk do |slot|
+      slot
+    end.to_a
+  end
+
+  def check_vertical_win(open_slot_index, chip)
+    grouped_chips = group_row(open_slot_index)
+    if chip == "X"
+      four_x_in_a_row(grouped_chips)
+    elsif chip == "O"
+      four_o_in_a_row(grouped_chips)
+    end
   end
   # def horizontal?
   #   if @slots[new_fill_index]  + @slots[new_fill_index - 1] + @slots[new_fill_index - 2] + @slots[new_fill_index - 3] == "XXXX"
