@@ -54,11 +54,6 @@ class Board
     puts
   end
 
-  def fill_slot(input, chip)
-    open_slot_index = find_open_slot(input)
-    place_chip(input, open_slot_index, chip)
-  end
-
   def column_open?(input)
     @slots[input][5] == "."
   end
