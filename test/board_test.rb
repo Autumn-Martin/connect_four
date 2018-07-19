@@ -131,7 +131,7 @@ class BoardTest < Minitest::Test
     assert board.four_o_in_a_row(grouped_chips)
   end
 
-  def test_can_check_for_a_win_when_chip_is_x
+  def test_can_check_for_a_horizontal_win_when_chip_is_x
     board = Board.new
     input = "A"
     chip = "X"
@@ -143,7 +143,7 @@ class BoardTest < Minitest::Test
     board.slots["A"][4] = "."
     board.slots["A"][5] = "."
 
-    assert board.check_win(input, chip)
+    assert board.check_horizontal_win(input, chip)
 
     board.slots["A"][0] = "X"
     board.slots["A"][1] = "X"
@@ -152,10 +152,10 @@ class BoardTest < Minitest::Test
     board.slots["A"][4] = "."
     board.slots["A"][5] = "."
 
-    refute board.check_win(input, chip)
+    refute board.check_horizontal_win(input, chip)
   end
 
-  def test_can_check_for_a_win_when_chip_is_o
+  def test_can_check_for_a_horizontal_win_when_chip_is_o
     board = Board.new
     input = "A"
     chip = "O"
@@ -167,7 +167,7 @@ class BoardTest < Minitest::Test
     board.slots["A"][4] = "."
     board.slots["A"][5] = "."
 
-    assert board.check_win(input, chip)
+    assert board.check_horizontal_win(input, chip)
 
     board.slots["A"][0] = "."
     board.slots["A"][1] = "."
@@ -176,13 +176,14 @@ class BoardTest < Minitest::Test
     board.slots["A"][4] = "."
     board.slots["A"][5] = "."
 
-    refute board.check_win(input, chip)
+    refute board.check_horizontal_win(input, chip)
   end
 
 
   def test_can_create_row_based_on_recent_chip_placement
       board = Board.new
       input = "A"
+      chip = "X"
 
       board.slots["A"][0] = "."
       board.slots["B"][0] = "X"
@@ -197,6 +198,58 @@ class BoardTest < Minitest::Test
 
 
       assert_equal ["X","X","X","X","O","O","."], board.new_chip_row(open_slot_index)
+  end
+
+  def test_can_group_the_row_made_based_on_recent_chip_placement
+    board = Board.new
+    input = "A"
+    chip = "X"
+
+    board.slots["A"][0] = "." #=> board.slots["A"][0] = "X"
+    board.slots["B"][0] = "X"
+    board.slots["C"][0] = "X"
+    board.slots["D"][0] = "X"
+    board.slots["E"][0] = "O"
+    board.slots["F"][0] = "O"
+    board.slots["G"][0] = "."
+
+    open_slot_index = board.find_open_slot(input) #=> 0
+    board.place_chip(input, open_slot_index, chip)
+    board.new_chip_row(open_slot_index)
+
+    expected = [["X", ["X","X","X","X"]], ["O", ["O","O"]], [".", ["."]]]
+
+    assert_equal expected, board.group_row(open_slot_index)
+  end
+
+  def test_can_check_for_a_vertical_win_when_chip_is_o
+    board = Board.new
+    input = "A"
+    chip = "O"
+
+    open_slot_index = board.find_open_slot(input) #=> 0
+    board.place_chip(input, open_slot_index, chip)
+    board.new_chip_row(open_slot_index)
+
+    board.slots["A"][0] = "O"
+    board.slots["B"][0] = "O"
+    board.slots["C"][0] = "O"
+    board.slots["D"][0] = "O"
+    board.slots["E"][0] = "."
+    board.slots["F"][0] = "."
+    board.slots["G"][0] = "."
+
+    assert board.check_vertical_win(open_slot_index, chip)
+
+    board.slots["A"][0] = "."
+    board.slots["B"][0] = "."
+    board.slots["C"][0] = "."
+    board.slots["D"][0] = "."
+    board.slots["E"][0] = "."
+    board.slots["F"][0] = "."
+    board.slots["G"][0] = "."
+
+    refute board.check_vertical_win(open_slot_index, chip)
   end
 
 
