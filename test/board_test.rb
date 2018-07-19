@@ -115,16 +115,6 @@ class BoardTest < Minitest::Test
     assert_equal expected, board.group_column(input)
   end
 
-
-  def test_can_count_number_x_or_o_in_a_row
-    board = Board.new
-    # input = "A"
-    chip = "X"
-
-    grouped_chips = [["X", ["X", "X", "X", "X"]], [".", [".", "."]]]
-    assert_equal 4, board.count_x_or_o(grouped_chips, chip)
-  end
-
   def test_can_detect_pattern_of_four_x_in_a_row
     board = Board.new
 
@@ -139,6 +129,54 @@ class BoardTest < Minitest::Test
     grouped_chips = [["O", ["O", "O", "O", "O"]], [".", [".", "."]]]
 
     assert board.four_o_in_a_row(grouped_chips)
+  end
+
+  def test_can_check_for_a_win_when_chip_is_x
+    board = Board.new
+    input = "A"
+    chip = "X"
+
+    board.slots["A"][0] = "X"
+    board.slots["A"][1] = "X"
+    board.slots["A"][2] = "X"
+    board.slots["A"][3] = "X"
+    board.slots["A"][4] = "."
+    board.slots["A"][5] = "."
+
+    assert board.check_win(input, chip)
+
+    board.slots["A"][0] = "X"
+    board.slots["A"][1] = "X"
+    board.slots["A"][2] = "X"
+    board.slots["A"][3] = "."
+    board.slots["A"][4] = "."
+    board.slots["A"][5] = "."
+
+    refute board.check_win(input, chip)
+  end
+
+  def test_can_check_for_a_win_when_chip_is_o
+    board = Board.new
+    input = "A"
+    chip = "O"
+
+    board.slots["A"][0] = "O"
+    board.slots["A"][1] = "O"
+    board.slots["A"][2] = "O"
+    board.slots["A"][3] = "O"
+    board.slots["A"][4] = "."
+    board.slots["A"][5] = "."
+
+    assert board.check_win(input, chip)
+
+    board.slots["A"][0] = "."
+    board.slots["A"][1] = "."
+    board.slots["A"][2] = "."
+    board.slots["A"][3] = "."
+    board.slots["A"][4] = "."
+    board.slots["A"][5] = "."
+
+    refute board.check_win(input, chip)
   end
 
 
