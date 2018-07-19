@@ -104,20 +104,20 @@ class BoardTest < Minitest::Test
     assert_equal expected, board.group_column(input)
   end
 
-  def test_can_detect_pattern_of_four_x_in_a_row
+  def test_can_detect_pattern_of_four_x_in_a_row?
     board = Board.new
 
     grouped_chips = [["X", ["X", "X", "X", "X"]], [".", [".", "."]]]
 
-    assert board.four_x_in_a_row(grouped_chips)
+    assert board.four_x_in_a_row?(grouped_chips)
   end
 
-  def test_can_detect_pattern_of_four_o_in_a_row
+  def test_can_detect_pattern_of_four_o_in_a_row?
     board = Board.new
 
     grouped_chips = [["O", ["O", "O", "O", "O"]], [".", [".", "."]]]
 
-    assert board.four_o_in_a_row(grouped_chips)
+    assert board.four_o_in_a_row?(grouped_chips)
   end
 
   def test_can_check_for_a_vertical_win_when_chip_is_x
@@ -186,7 +186,7 @@ class BoardTest < Minitest::Test
       board.place_chip(input, open_slot_index, chip)
 
 
-      assert_equal ["X","X","X","X","O","O","."], board.new_chip_row(open_slot_index)
+      assert_equal ["X","X","X","X","O","O","."], board.row_of_last_placed_chip(open_slot_index)
   end
 
   def test_can_group_the_row_made_based_on_recent_chip_placement
@@ -204,7 +204,7 @@ class BoardTest < Minitest::Test
 
     open_slot_index = board.find_open_slot(input) #=> 0
     board.place_chip(input, open_slot_index, chip)
-    board.new_chip_row(open_slot_index)
+    board.row_of_last_placed_chip(open_slot_index)
 
     expected = [["X", ["X","X","X","X"]], ["O", ["O","O"]], [".", ["."]]]
 
@@ -218,7 +218,7 @@ class BoardTest < Minitest::Test
 
     open_slot_index = board.find_open_slot(input) #=> 0
     board.place_chip(input, open_slot_index, chip)
-    board.new_chip_row(open_slot_index)
+    board.row_of_last_placed_chip(open_slot_index)
 
     board.slots["A"][0] = "O"
     board.slots["B"][0] = "O"
@@ -248,7 +248,7 @@ class BoardTest < Minitest::Test
 
     open_slot_index = board.find_open_slot(input) #=> 0
     board.place_chip(input, open_slot_index, chip)
-    board.new_chip_row(open_slot_index)
+    board.row_of_last_placed_chip(open_slot_index)
 
     board.slots["A"][0] = "X"
     board.slots["B"][0] = "X"

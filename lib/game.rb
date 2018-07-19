@@ -27,7 +27,7 @@ class Game
       board.draw_board
       if game_over(input, chip, open_slot_index) == true
         end_game
-      else  # switch/turn
+      else
         switch
         turn
       end
