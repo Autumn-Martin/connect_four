@@ -24,7 +24,7 @@ class Game
     if board.column_open?(input)
       @board.fill_slot(input, chip)
       board.draw_board
-      if game_over == true
+      if game_over(input, chip) == true
         end_game
       else  # switch/turn
         switch
@@ -44,8 +44,10 @@ class Game
     end
   end
 
-  def game_over
+  def game_over(input, chip)
     if board.top_row_empty? == false
+      true
+    elsif board.check_win(input, chip)
       true
     else
       false
