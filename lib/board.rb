@@ -57,19 +57,28 @@ class Board
     @slots[input][open_slot_index] = chip
   end
 
-  def top_row
-    [@slots["A"][5], @slots["B"][5], @slots["C"][5], @slots["D"][5], @slots["E"][5], @slots["F"][5], @slots["G"][5]]
-  end
-
   def top_row_empty?
     top_row.any? {|slot| slot == "."} #=> true if empty; false if full
   end
 
+  def top_row
+    [@slots["A"][5], @slots["B"][5], @slots["C"][5], @slots["D"][5], @slots["E"][5], @slots["F"][5], @slots["G"][5]]
+  end
+
+  def row_of_last_placed_chip(open_slot_index)
+    [@slots["A"][open_slot_index], @slots["B"][open_slot_index], @slots["C"][open_slot_index], @slots["D"][open_slot_index], @slots["E"][open_slot_index], @slots["F"][open_slot_index], @slots["G"][open_slot_index]]
+  end
 
   def group_column(input)
     @slots[input].chunk do |slot|
       slot
     end.to_a #=> [[".", ["."]], ["X", ["X", "X", "X", "X"]], [".", ["."]]]
+  end
+
+  def group_row(open_slot_index)
+    row_of_last_placed_chip(open_slot_index).chunk do |slot|
+      slot
+    end.to_a
   end
 
   def four_x_in_a_row?(grouped_chips)
@@ -89,17 +98,6 @@ class Board
     end
   end
 
-  def row_of_last_placed_chip(open_slot_index)
-    [@slots["A"][open_slot_index], @slots["B"][open_slot_index], @slots["C"][open_slot_index], @slots["D"][open_slot_index], @slots["E"][open_slot_index], @slots["F"][open_slot_index], @slots["G"][open_slot_index]]
-  end
-
-
-  def group_row(open_slot_index)
-    row_of_last_placed_chip(open_slot_index).chunk do |slot|
-      slot
-    end.to_a
-  end
-
   def check_horizontal_win(open_slot_index, chip)
     grouped_chips = group_row(open_slot_index)
     if chip == "X"
@@ -108,5 +106,5 @@ class Board
       four_o_in_a_row?(grouped_chips)
     end
   end
-  
+
 end
