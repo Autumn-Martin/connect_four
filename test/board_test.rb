@@ -180,6 +180,25 @@ class BoardTest < Minitest::Test
   end
 
 
+  def test_can_create_row_based_on_recent_chip_placement
+      board = Board.new
+      input = "A"
+
+      board.slots["A"][0] = "."
+      board.slots["B"][0] = "X"
+      board.slots["C"][0] = "X"
+      board.slots["D"][0] = "X"
+      board.slots["E"][0] = "O"
+      board.slots["F"][0] = "O"
+      board.slots["G"][0] = "."
+
+      open_slot_index = board.find_open_slot(input) #=> 0
+      board.place_chip(input, open_slot_index, chip)
+
+
+      assert_equal ["X","X","X","X","O","O","."], board.new_chip_row(open_slot_index)
+  end
+
 
   # def test_can_tell_four_in_a_row_horizontally
   #   board = Board.new
