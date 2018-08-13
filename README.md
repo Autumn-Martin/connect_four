@@ -1,28 +1,3 @@
-IDEAS:
-
-
-Classes
-* Board
- - @row1
- - @row2
- - @row3
- - @row4
- - @row5
- - @row6
- - @player_chip
- - @ai_chip
-
-* Player? - could have them enter their name, pick x or o, etc
-  - @name - AI, player name
-
-* Game - game logic
- - @game_state
- - def initialize
-      new instance of board
-* Chip
-  @color
-* ConnectFour - runs the game
-
 NOTES:
  * game runs from command line via ./lib/connect_four.rb
  * player will be ask to to enter column names to place one of their pieces
