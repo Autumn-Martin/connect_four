@@ -38,9 +38,9 @@ This project was tested with Minitest. `$ rake` or `$ rake test` will run these 
 ### Iterations
 #### Iteration 1 Printing the Board
  * player sees a welcome message & an empty board with empty spaces (periods) & column names (A-G)
- ``` Welcome Autumn! Let's play Connect Four! ```
- 
- ```
+ ``` 
+ Welcome Autumn! Let's play Connect Four!
+
  ABCDEFG
 .......
 .......
@@ -48,6 +48,9 @@ This project was tested with Minitest. `$ rake` or `$ rake test` will run these 
 .......
 .......
 .......
+
+
+Which slot would you like to select? Enter A,B,C,D,E,F, or G. >
 ```
 
 #### Iteration 2 Playing the Game
