@@ -15,7 +15,7 @@ XXOXX.X
 XOXXOOX
 ```
 
-![video of game play](./assets/connect_four_movie)
+![video of game play](./assets/connect_four_gif)
 
 ### Getting Started
 ##### (`$` denotes command line interface (CLI) commands)
